@@ -12,6 +12,7 @@ public class ChordNode implements Hashable{
 	}
 	
 	public ActorRef getRef(){
+		//Paramètre à mettre dans .tell
 		return null;
 	}
 
