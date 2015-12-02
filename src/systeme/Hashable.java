@@ -1,4 +1,4 @@
-package metier;
+package systeme;
 
 public interface Hashable {
 	int getKey();
