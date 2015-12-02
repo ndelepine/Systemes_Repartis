@@ -46,16 +46,14 @@ public class TestFingerTable {
 		fttest.fingertableEntry(1, 0, 1, 4, cntest);
 
 		//On récupère le numéro de la ligne et l'id du noeud pour calculer l'intervalle associée
-		int IDNoeud = fttest.getFingerTable().get(1).getIDnoeud();
-		int lower = fttest.getFingerTable().get(1).getLowerBound();
-		int upper = fttest.getFingerTable().get(1).getUpperBound();
-		ChordNode cn = fttest.getFingerTable().get(1).getReferent();
+		int numLine = 1; 
+		int IDNoeud = fttest.getFingerTable().get(numLine).getIDnoeud();
+
+		//On calcule lower et upper en fonction de ces deux variables.
 
 		//On teste l'égalité entre les éléments de la TableEntry et ceux insérés
-		assertEquals(IDNoeud, 0);
 		assertEquals(lower, 1);
-		assertEquals(upper, 4);
-		assertEquals(cn, cntest);
+		assertEquals(upper, 3);
 	}
 
 }
