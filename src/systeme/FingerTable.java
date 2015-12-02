@@ -8,11 +8,12 @@ public class FingerTable {
 	
 	TreeMap<Integer,TableEntry> fingerTable = new TreeMap<Integer,TableEntry>();
 	
-	public FingerTable(){
-		
+	public FingerTable(int id){	
+		//Id veut rentrer dans le système. A partir de id, on calcul les Noeuds vers lesquels il pointe (id+1,id+2,id+4,id+8,..id+M)
+		//A partir de ces noeuds et des numéros de la ligne, on calcule lowerBound et upperBound. On met comme referent lui même.
 		for (int i=1;i<=4;i++){
 			ChordNode cntest = new ChordNode();
-			fingertableEntry(i,i+1,i+2,i+3,cntest);
+			fingertableEntry(i,0,0,0,cntest);
 		}
 	}
 	public void fingertableEntry (int numLine, int IDnoeud, int lowerBound, int upperBound, ChordNode referent){
