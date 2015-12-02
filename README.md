@@ -1,2 +1,1 @@
-# Systemes_Repartis
-# Projet de systemes repartis - ENSAI 2015
+# Projet de systeèes répartis - ENSAI 2015
