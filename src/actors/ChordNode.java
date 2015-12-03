@@ -6,6 +6,10 @@ import systeme.Hashable;
 public class ChordNode implements Hashable{
 
 	int key;
+	
+	public ChordNode(int key){
+		this.key=key;
+	}
 
 	public int getKey(){
 		return this.key;

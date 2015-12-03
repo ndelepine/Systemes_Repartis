@@ -2,14 +2,9 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
-
 import org.junit.Test;
 
 import systeme.FingerTable;
-import systeme.TableEntry;
 import actors.ChordNode;
 
 public class TestFingerTable {
@@ -17,8 +12,8 @@ public class TestFingerTable {
 	@Test
 	public void fingertableEntrytest() {
 		//Test de l'update d'une ligne dans la FingerTable
-		ChordNode cntest = new ChordNode();
-		FingerTable fttest = new FingerTable(0);
+		ChordNode cntest = new ChordNode(0);
+		FingerTable fttest = new FingerTable(cntest);
 
 		//On insère une ligne dans la fingerTable
 		fttest.fingertableEntry(1, 0, 1, 4, cntest);
@@ -39,21 +34,19 @@ public class TestFingerTable {
 	@Test
 	public void Intervalltest() {
 		//Test du calcul des intervalles
-		ChordNode cntest = new ChordNode();
-		FingerTable fttest = new FingerTable(0);
-
-		//On insère une ligne dans la fingerTable
-		fttest.fingertableEntry(1, 0, 1, 4, cntest);
+		ChordNode cntest = new ChordNode(0);
+		FingerTable fttest = new FingerTable(cntest);
 
 		//On récupère le numéro de la ligne et l'id du noeud pour calculer l'intervalle associée
 		int numLine = 1; 
-		int IDNoeud = fttest.getFingerTable().get(numLine).getIDnoeud();
-
+		int IDNoeud = cntest.getKey();
 		//On calcule lower et upper en fonction de ces deux variables.
-
+		int lower = fttest.calculIntervalle(numLine, IDNoeud).get(0);
+		int upper = fttest.calculIntervalle(numLine, IDNoeud).get(1);
+		
 		//On teste l'égalité entre les éléments de la TableEntry et ceux insérés
-		assertEquals(lower, 1);
-		assertEquals(upper, 3);
+		assertEquals(1, lower);
+		assertEquals(2, upper);
 	}
 
 }

@@ -46,6 +46,11 @@ public class TableEntry {
 	public void setReferent(ChordNode referent) {
 		this.referent = referent;
 	}
+
+	@Override
+	public String toString() {
+		return "ID = "+IDnoeud + " | lower = " +lowerBound + " | upper = " + upperBound + " | referent = " + referent.getKey()+"\n" ;
+	}
 	
 	
 }

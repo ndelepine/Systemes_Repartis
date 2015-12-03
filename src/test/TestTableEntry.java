@@ -11,7 +11,7 @@ public class TestTableEntry {
 
 	@Test
 	public void testTableEntry() {
-		ChordNode cn = new ChordNode();
+		ChordNode cn = new ChordNode(0);
 		TableEntry tetest = new TableEntry(0,1,4,cn);
 		
 		int IDnoeud = tetest.getIDnoeud();
