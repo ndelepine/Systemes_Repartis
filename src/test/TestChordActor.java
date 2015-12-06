@@ -14,7 +14,7 @@ public class TestChordActor {
 	public void testFindSuccessor() {
 		//Test de la recherche du successeur
 		ChordActor catest = new ChordActor(0);
-		ChordNode cntest = new ChordNode(3);
+		ChordNode cntest = new ChordNode(10);
 		FingerTable fttest = new FingerTable(catest);
 
 		int succ = catest.findSuccessor(cntest);
