@@ -2,6 +2,7 @@ package actors;
 
 import akka.actor.ActorRef;
 import systeme.Hashable;
+import systeme.FingerTable;
 
 public class ChordNode implements Hashable{
 
