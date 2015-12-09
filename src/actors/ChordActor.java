@@ -3,6 +3,7 @@ package actors;
 import systeme.FingerTable;
 import systeme.Hashable;
 
+
 public class ChordActor implements Hashable{
 
 	int key;
@@ -13,4 +14,5 @@ public class ChordActor implements Hashable{
 		return 0;
 	}
 
+	//Protocole
 }

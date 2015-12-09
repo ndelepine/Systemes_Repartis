@@ -1,5 +1,5 @@
 package systeme;
 
-public interface Hashable {
+public interface Hashable{
 	int getKey();
 }
