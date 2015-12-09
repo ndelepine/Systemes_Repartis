@@ -1,6 +1,5 @@
 package systeme;
 
-import java.util.ArrayList;
 import java.util.TreeMap;
 
 import actors.ChordActor;
@@ -16,10 +15,9 @@ public class FingerTable {
 		System.out.println("-----------------------------\n");
 		for (int i=1;i<=4;i++){
 			int noeud = (int) (actor.getKey().getIntKey()+Math.pow(2, (i-1)));
-			int lower = calculIntervalle(i, actor.getKey().getIntKey()).get(0);
-			int upper = calculIntervalle(i, actor.getKey().getIntKey()).get(1);
+			Interval interval = calculIntervalle(i, actor.getKey().getIntKey());
 			ChordNode ref = new ChordNode(actor.getKey());
-			TableEntry entry = fingertableEntry(i,noeud,lower,upper,ref);
+			TableEntry entry = fingertableEntry(i,noeud,interval,ref);
 
 			System.out.println(entry);
 
@@ -28,8 +26,8 @@ public class FingerTable {
 		//System.out.println(this.getFingerTable());
 		actor.setFingerTable(this);
 	}
-	public TableEntry fingertableEntry (int numLine, int IDnoeud, int lowerBound, int upperBound, ChordNode referent){
-		TableEntry tableEntry = new TableEntry(IDnoeud, lowerBound,upperBound, referent);
+	public TableEntry fingertableEntry (int numLine, int IDnoeud, Interval interval, ChordNode referent){
+		TableEntry tableEntry = new TableEntry(IDnoeud, interval, referent);
 		fingerTable.put(numLine, tableEntry);
 		return tableEntry;
 	}
@@ -42,13 +40,11 @@ public class FingerTable {
 		this.fingerTable = fingerTable;
 	}
 	
-	public ArrayList<Integer> calculIntervalle(int numLine, int IDNoeud){
-		ArrayList<Integer> bounds = new ArrayList<Integer>();
+	public Interval calculIntervalle(int numLine, int IDNoeud){
 		int lower = (int)(IDNoeud + Math.pow(2, (numLine-1))%Math.pow(2,4));
 		int upper = (int)(IDNoeud + Math.pow(2, (numLine))%Math.pow(2,4));
-		bounds.add(lower);
-		bounds.add(upper);
-		return bounds;
+		Interval res = new Interval(lower,upper);
+		return res;
 	}
 	
 }

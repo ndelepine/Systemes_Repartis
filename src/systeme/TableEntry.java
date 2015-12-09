@@ -4,14 +4,12 @@ import actors.ChordNode;
 
 public class TableEntry {
 	int IDnoeud;
-	int lowerBound;
-	int upperBound;
+	Interval interval;
 	ChordNode referent;
 	
-	public TableEntry(int IDnoeud, int lowerBound,int upperBound, ChordNode referent){
+	public TableEntry(int IDnoeud, Interval interval, ChordNode referent){
 		this.IDnoeud = IDnoeud;
-		this.lowerBound=lowerBound;
-		this.upperBound=upperBound;
+		this.interval = interval;
 		this.referent=referent;
 	}
 
@@ -23,22 +21,6 @@ public class TableEntry {
 		IDnoeud = iDnoeud;
 	}
 
-	public int getLowerBound() {
-		return lowerBound;
-	}
-
-	public void setLowerBound(int lowerBound) {
-		this.lowerBound = lowerBound;
-	}
-
-	public int getUpperBound() {
-		return upperBound;
-	}
-
-	public void setUpperBound(int upperBound) {
-		this.upperBound = upperBound;
-	}
-
 	public ChordNode getReferent() {
 		return referent;
 	}
@@ -47,9 +29,17 @@ public class TableEntry {
 		this.referent = referent;
 	}
 
+	public Interval getInterval() {
+		return interval;
+	}
+
+	public void setInterval(Interval interval) {
+		this.interval = interval;
+	}
+
 	@Override
 	public String toString() {
-		return "ID = "+IDnoeud + " | lower = " +lowerBound + " | upper = " + upperBound + " | referent = " + referent.getKey().getIntKey()+"\n" ;
+		return "ID = "+IDnoeud + " | intervall = " +interval+ " | referent = " + referent.getKey().getIntKey()+"\n" ;
 	}
 	
 	

@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import systeme.FingerTable;
 import systeme.Key;
+import systeme.TableEntry;
 import actors.ChordActor;
 import actors.ChordNode;
 
@@ -21,9 +22,10 @@ public class TestChordActor {
 		ChordNode cntest = new ChordNode(keyActor);
 		FingerTable fttest = new FingerTable(catest);
 
-		int succ = catest.findIntervallReferent(cntest);
+		TableEntry succ = catest.findIntervallReferent(cntest);
 		//On teste l'égalité entre les éléments de la TableEntry et ceux insérés
-		assertEquals(0, succ);
+		int res = succ.getReferent().getKey().getIntKey();
+		assertEquals(0, res);
 	}
 
 }

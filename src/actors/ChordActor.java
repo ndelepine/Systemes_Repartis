@@ -2,6 +2,7 @@ package actors;
 
 import systeme.FingerTable;
 import systeme.Hashable;
+import systeme.Interval;
 import systeme.Key;
 import systeme.TableEntry;
 
@@ -38,21 +39,22 @@ public class ChordActor implements Hashable{
 		this.fingerTable = fingerTable;
 	}
 
-
-	public int findIntervallReferent(ChordNode acteur) {
+	//Fonction qui regarde à quelle intervalle appartient l'acteur et qui renvoie la ligne
+	public TableEntry findIntervallReferent(ChordNode acteur) {
 		//Voir si on retourne un Node ou un int
-		int res=-1;
-		//A remplacer par while
+		TableEntry res=null;
+		//ON parcourt la table à l'envers (gain de temps)
 		for (int i=1;i<=fingerTable.getFingerTable().size();i++){
 			TableEntry temp = fingerTable.getFingerTable().get(i);
-			int lower = temp.getLowerBound();
-			int upper = temp.getUpperBound();
+			Interval interval = temp.getInterval();
 			//On prend en compte le tour du cercle (ex : 6 n'appartient pas [4;0] mais à [4;8]
+			int lower = interval.getLowerBound();
+			int upper = interval.getUpperBound();
 			if(upper < lower){
 				upper += 16;
 				if (acteur.getKey().getIntKey()<=upper & acteur.getKey().getIntKey()>=lower){
-					System.out.println(temp.getLowerBound() +" - " + temp.getUpperBound() + " Ligne : " + i);
-					res = temp.getReferent().getKey().getIntKey();
+					System.out.println(interval.getLowerBound() +" - " + interval.getUpperBound() + " Ligne : " + i);
+					res = temp;
 				}
 			}
 		}

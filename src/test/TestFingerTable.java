@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import systeme.FingerTable;
+import systeme.Interval;
 import systeme.Key;
 import actors.ChordActor;
 import actors.ChordNode;
@@ -20,13 +21,14 @@ public class TestFingerTable {
 		ChordActor catest = new ChordActor(key);
 		FingerTable fttest = new FingerTable(catest);
 		ChordNode cntest = new ChordNode(key);
+		Interval interval = new Interval(1,4);
 		//On insère une ligne dans la fingerTable
-		fttest.fingertableEntry(1, 0, 1, 4, cntest);
+		fttest.fingertableEntry(1, 0, interval, cntest);
 
 		//On récupère chaque élément de la TableEntry dans la FingerTable
 		int IDNoeud = fttest.getFingerTable().get(1).getIDnoeud();
-		int lower = fttest.getFingerTable().get(1).getLowerBound();
-		int upper = fttest.getFingerTable().get(1).getUpperBound();
+		int lower = interval.getLowerBound();
+		int upper = interval.getUpperBound();
 		ChordNode cn = fttest.getFingerTable().get(1).getReferent();
 
 		//On teste l'égalité entre les éléments de la TableEntry et ceux insérés
@@ -47,8 +49,8 @@ public class TestFingerTable {
 		int numLine = 1; 
 		int IDNoeud = catest.getKey().getIntKey();
 		//On calcule lower et upper en fonction de ces deux variables.
-		int lower = fttest.calculIntervalle(numLine, IDNoeud).get(0);
-		int upper = fttest.calculIntervalle(numLine, IDNoeud).get(1);
+		int lower = fttest.calculIntervalle(numLine, IDNoeud).getLowerBound();
+		int upper = fttest.calculIntervalle(numLine, IDNoeud).getUpperBound();
 		
 		//On teste l'égalité entre les éléments de la TableEntry et ceux insérés
 		assertEquals(1, lower);
