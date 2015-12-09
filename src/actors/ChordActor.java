@@ -44,14 +44,14 @@ public class ChordActor implements Hashable{
 		//Voir si on retourne un Node ou un int
 		TableEntry res=null;
 		//ON parcourt la table à l'envers (gain de temps)
-		for (int i=1;i<=fingerTable.getFingerTable().size();i++){
+		for (int i=fingerTable.getFingerTable().size()-1;i>=0;i--){
 			TableEntry temp = fingerTable.getFingerTable().get(i);
 			Interval interval = temp.getInterval();
 			//On prend en compte le tour du cercle (ex : 6 n'appartient pas [4;0] mais à [4;8]
 			int lower = interval.getLowerBound();
 			int upper = interval.getUpperBound();
 			if(upper < lower){
-				upper += 16;
+				upper += Key.nb_acteurs;
 				if (acteur.getKey().getIntKey()<=upper & acteur.getKey().getIntKey()>=lower){
 					System.out.println(interval.getLowerBound() +" - " + interval.getUpperBound() + " Ligne : " + i);
 					res = temp;

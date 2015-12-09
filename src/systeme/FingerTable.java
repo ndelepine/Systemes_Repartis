@@ -13,7 +13,7 @@ public class FingerTable {
 		//Id veut rentrer dans le système. A partir de id, on calcul les Noeuds vers lesquels il pointe (id+1,id+2,id+4,id+8,..id+M)
 		//A partir de ces noeuds et des numéros de la ligne, on calcule lowerBound et upperBound. On met comme referent lui même.
 		System.out.println("-----------------------------\n");
-		for (int i=1;i<=4;i++){
+		for (int i=1;i<=Key.nbLignesFingerTable;i++){
 			int noeud = (int) (actor.getKey().getIntKey()+Math.pow(2, (i-1)));
 			Interval interval = calculIntervalle(i, actor.getKey().getIntKey());
 			ChordNode ref = new ChordNode(actor.getKey());
@@ -41,8 +41,9 @@ public class FingerTable {
 	}
 	
 	public Interval calculIntervalle(int numLine, int IDNoeud){
-		int lower = (int)(IDNoeud + Math.pow(2, (numLine-1))%Math.pow(2,4));
-		int upper = (int)(IDNoeud + Math.pow(2, (numLine))%Math.pow(2,4));
+		int nbLignes = Key.nbLignesFingerTable;
+		int lower = (int)(IDNoeud + Math.pow(2, (numLine-1))%Math.pow(2,nbLignes));
+		int upper = (int)(IDNoeud + Math.pow(2, (numLine))%Math.pow(2,nbLignes));
 		Interval res = new Interval(lower,upper);
 		return res;
 	}
