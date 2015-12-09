@@ -1,18 +1,18 @@
 package actors;
 
-import akka.actor.ActorRef;
 import systeme.Hashable;
-import systeme.FingerTable;
+import systeme.Key;
+import akka.actor.ActorRef;
 
 public class ChordNode implements Hashable{
 
-	int key;
+	Key key;
 	
-	public ChordNode(int key){
+	public ChordNode(Key key){
 		this.key=key;
 	}
 
-	public int getKey(){
+	public Key getKey(){
 		return this.key;
 	}
 	

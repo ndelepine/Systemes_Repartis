@@ -49,7 +49,7 @@ public class TableEntry {
 
 	@Override
 	public String toString() {
-		return "ID = "+IDnoeud + " | lower = " +lowerBound + " | upper = " + upperBound + " | referent = " + referent.getKey()+"\n" ;
+		return "ID = "+IDnoeud + " | lower = " +lowerBound + " | upper = " + upperBound + " | referent = " + referent.getKey().getIntKey()+"\n" ;
 	}
 	
 	

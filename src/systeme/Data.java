@@ -4,9 +4,9 @@ package systeme;
 public class Data implements Hashable{
 
 	@Override
-	public int getKey() {
+	public Key getKey() {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 	
 

@@ -15,9 +15,9 @@ public class FingerTable {
 		//A partir de ces noeuds et des numéros de la ligne, on calcule lowerBound et upperBound. On met comme referent lui même.
 		System.out.println("-----------------------------\n");
 		for (int i=1;i<=4;i++){
-			int noeud = (int) (actor.getKey()+Math.pow(2, (i-1)));
-			int lower = calculIntervalle(i, actor.getKey()).get(0);
-			int upper = calculIntervalle(i, actor.getKey()).get(1);
+			int noeud = (int) (actor.getKey().getIntKey()+Math.pow(2, (i-1)));
+			int lower = calculIntervalle(i, actor.getKey().getIntKey()).get(0);
+			int upper = calculIntervalle(i, actor.getKey().getIntKey()).get(1);
 			ChordNode ref = new ChordNode(actor.getKey());
 			TableEntry entry = fingertableEntry(i,noeud,lower,upper,ref);
 

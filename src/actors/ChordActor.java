@@ -2,17 +2,18 @@ package actors;
 
 import systeme.FingerTable;
 import systeme.Hashable;
+import systeme.Key;
 import systeme.TableEntry;
 
 
 public class ChordActor implements Hashable{
 
-	int key;
+	Key key;
 	FingerTable fingerTable;
 	
 	
 	
-	public ChordActor(int key) {
+	public ChordActor(Key key) {
 		super();
 		this.key = key;
 	}
@@ -20,9 +21,9 @@ public class ChordActor implements Hashable{
 
 
 	@Override
-	public int getKey() {
+	public Key getKey() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.key;
 	}
 	
 	
@@ -38,14 +39,7 @@ public class ChordActor implements Hashable{
 	}
 
 
-
-	public void setKey(int key) {
-		this.key = key;
-	}
-
-
-
-	public int findSuccessor(ChordNode acteur) {
+	public int findIntervallReferent(ChordNode acteur) {
 		//Voir si on retourne un Node ou un int
 		int res=-1;
 		//A remplacer par while
@@ -56,9 +50,9 @@ public class ChordActor implements Hashable{
 			//On prend en compte le tour du cercle (ex : 6 n'appartient pas [4;0] mais à [4;8]
 			if(upper < lower){
 				upper += 16;
-				if (acteur.getKey()<=upper & acteur.getKey()>=lower){
+				if (acteur.getKey().getIntKey()<=upper & acteur.getKey().getIntKey()>=lower){
 					System.out.println(temp.getLowerBound() +" - " + temp.getUpperBound() + " Ligne : " + i);
-					res = temp.getReferent().getKey();
+					res = temp.getReferent().getKey().getIntKey();
 				}
 			}
 		}
