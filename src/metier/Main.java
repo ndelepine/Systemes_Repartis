@@ -227,6 +227,7 @@ public class Main {
 
 		StartMessage start = new StartMessage(Data.getInstance().calculRef(choix).getRef());
 		testActor.tell(start, testActor);
+		sc.close();
 	}
 	
 	public static void afficheFT(int acteur) {
