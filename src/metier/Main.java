@@ -61,7 +61,6 @@ public class Main {
 		
 		affichageMenu();
 
-		try {
 			do {
 				try {
 					menu = scan.nextInt();
@@ -141,15 +140,6 @@ public class Main {
 					 break;
 				}
 			} while (menu != 4);
-			
-		} catch(Exception ex) {
-			System.out.println("Erreur avec le programme");
-			scan.next();
-		} finally {
-			scan.close();
-			sc.close();
-			System.exit(0);
-		}
 	}
 	
 	public static void affichageMenu() {
@@ -227,7 +217,6 @@ public class Main {
 
 		StartMessage start = new StartMessage(Data.getInstance().calculRef(choix).getRef());
 		testActor.tell(start, testActor);
-		sc.close();
 	}
 	
 	public static void afficheFT(int acteur) {
