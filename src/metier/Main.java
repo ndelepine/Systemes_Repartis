@@ -107,7 +107,32 @@ public class Main {
 					
 					afficheFT(acteur);
 					break;
-				case 3: //stuff
+				case 3: 
+					System.out.println("Quel acteur doit se barrer ?");
+					int leaver=-1;
+					
+					try{
+						leaver = sc.nextInt();
+					}
+					catch(InputMismatchException ime){
+						System.out.println("Il faut rentrer un nombre : ");
+					}
+					
+					while(leaver<0 || leaver>Key.nb_acteurs-1){
+						if(leaver<0 || leaver>Key.nb_acteurs-1){
+							System.out.println("Le nombre rentré est incorrect. Il faut en ressaisir un : ");
+							try{
+								leaver = sc.nextInt();
+							}
+							catch(InputMismatchException ime){
+								System.out.println("Il faut rentrer un nombre : ");
+							}
+						}
+					}
+					
+					ActorRef refLeaver = Data.getInstance().calculRef(leaver).getRef();
+					chord.stop(refLeaver);
+					System.out.println("L'acteur a quitté le système.");
 					break;
 				case 4: System.out.println("Au revoir !");
 				break;
@@ -210,5 +235,4 @@ public class Main {
 		Data.getInstance().calculRef(acteur).getRef().tell(show, null);
 		
 	}
-	
 }
