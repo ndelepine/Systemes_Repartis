@@ -24,7 +24,7 @@ public class TestFingerTable {
 		ActorRef catest = chord.actorOf(Props.create(ChordActor.class,key), "ChordActor-"+key.getIntKey());
 
 		//Test de l'update d'une ligne dans la FingerTable
-		ChordNode cntest = new ChordNode(key,catest);
+		ChordNode cntest = new ChordNode(key,catest,null,null);
 		FingerTable fttest = new FingerTable(cntest);
 
 		Interval interval = new Interval(1,4);
@@ -51,7 +51,7 @@ public class TestFingerTable {
 		ActorSystem chord = ActorSystem.create("Chord");
 		ActorRef catest = chord.actorOf(Props.create(ChordActor.class,key), "ChordActor-"+key.getIntKey());
 		
-		ChordNode cntest = new ChordNode(key,catest);
+		ChordNode cntest = new ChordNode(key,catest,null,null);
 		FingerTable fttest = new FingerTable(cntest);
 
 		//On récupère le numéro de la ligne et l'id du noeud pour calculer l'intervalle associée

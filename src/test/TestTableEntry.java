@@ -20,7 +20,7 @@ public class TestTableEntry {
 		//Création du système d'acteurs
 		ActorSystem chord = ActorSystem.create("Chord");
 		ActorRef catest = chord.actorOf(Props.create(ChordActor.class,key), "ChordActor-"+key.getIntKey());
-		ChordNode cn = new ChordNode(key,catest);
+		ChordNode cn = new ChordNode(key,catest,null,null);
 		
 		Interval interval = new Interval(1, 4);
 		TableEntry tetest = new TableEntry(0,interval,cn);

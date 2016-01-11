@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.TreeMap;
 
+import msg.StabilizationMessage;
+
 import actors.ChordNode;
 import akka.actor.ActorRef;
 
@@ -11,7 +13,7 @@ import akka.actor.ActorRef;
 public class Data{
 	//Classe qui contient les cléfs des acteurs présents dans le système ainsi que leur référence et la référence de leur successeur
 	private TreeMap<Integer,ArrayList<ChordNode>> references = new TreeMap<Integer,ArrayList<ChordNode>>();
-	
+
 	/** Constructeur privé */
 	private Data()
 	{}
@@ -28,7 +30,7 @@ public class Data{
 		}
 		return actorRefs;
 	}
-	
+
 	public ChordNode calculRef(int numeroActeur){
 		ChordNode calc = null;
 		try {
@@ -38,12 +40,12 @@ public class Data{
 		}
 		return calc;
 	}
-	
+
 	//Calcul du sucesseur en fonction de la clé de l'acteur
 	public ChordNode calculSuccessor(int numeroActeur){
 		return references.get(numeroActeur).get(1);
 	}
-	
+
 	//Calcul du sucesseur en fonction de la référence de l'acteur
 	public ChordNode calculSuccessor(ActorRef ref){
 		ChordNode result = null;
@@ -54,12 +56,30 @@ public class Data{
 		}
 		return result;
 	}
-	
+
 	public void updateRef(int numeroActeur, ChordNode ref, ChordNode successor){
 		ArrayList<ChordNode> refs = new ArrayList<ChordNode>();
 		refs.add(ref);
 		refs.add(successor);
 		references.put(numeroActeur, refs);
 	}
+
+	public void stabilize(){
+		for(Map.Entry<Integer,ArrayList<ChordNode>> entry : references.entrySet()) {
+			StabilizationMessage temp = new StabilizationMessage();
+			entry.getValue().get(0).getRef().tell(temp,null);
+		}
+	}
 	
+	public boolean isEmpty(){
+		return(references.size()==0);
+	}
+	
+	public void delete(ActorRef leaver){
+		for(Map.Entry<Integer,ArrayList<ChordNode>> entry : references.entrySet()) {
+			if(entry.getValue().get(0).getRef()==leaver){
+				references.remove(entry.getKey());
+			}
+		}
+	}
 }

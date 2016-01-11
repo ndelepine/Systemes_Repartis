@@ -6,9 +6,9 @@ public class SearchPredecessorMessage extends ChordMessage {
 
 	ChordNode searcher;
 
-	public SearchPredecessorMessage(ChordNode joiner) {
+	public SearchPredecessorMessage(ChordNode searcher) {
 		super();
-		this.searcher = joiner;
+		this.searcher = searcher;
 	}
 
 	public ChordNode getSearcher() {

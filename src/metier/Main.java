@@ -59,17 +59,24 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		int menu = -1;
 		
-		affichageMenu();
+
 
 			do {
+				try {
+					Thread.sleep(500);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				affichageMenu();
 				try {
 					menu = scan.nextInt();
 				} catch(InputMismatchException ime) {
 					System.out.println("Il faut rentrer un nombre.");
 				}
 
-				while (menu<1 || menu >4) {
-					if (menu<1 || menu >4) {
+				while (menu<1 || menu >5) {
+					if (menu<1 || menu >5) {
 						System.out.println("Veuillez rentrer une option valide");
 						try {
 							menu = scan.nextInt();
@@ -133,13 +140,19 @@ public class Main {
 					chord.stop(refLeaver);
 					System.out.println("L'acteur a quitté le système.");
 					break;
-				case 4: System.out.println("Au revoir !");
+				case 4: System.out.println("Lancement de l'algorithme de stabilisation :");
+					Data.getInstance().stabilize();
+				break;
+				
+				case 5: System.out.println("Au revoir !");
+				System.exit(0);
+				sc.close();
 				break;
 				default:
 					System.out.println("Je ne sais pas comment tu es arrivé(e) ici mais tu es fort(e) !");
 					 break;
 				}
-			} while (menu != 4);
+			} while (menu != 5);
 	}
 	
 	public static void affichageMenu() {
@@ -150,7 +163,8 @@ public class Main {
 		System.out.println("1 - Ajouter un acteur");
 		System.out.println("2 - Afficher la FingerTable d'un acteur");
 		System.out.println("3 - Faire quitter un acteur du système");
-		System.out.println("4 - Quitter l'application");
+		System.out.println("4 - Lancer l'algorithme de stabilisation");
+		System.out.println("5 - Quitter l'application");
 	}
 
 	public static void ajouter(int choix, ActorSystem chord) {
