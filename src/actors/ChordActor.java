@@ -331,6 +331,9 @@ public class ChordActor extends UntypedActor implements Hashable{
 
 		this.successor = fingerTable.getFingerTable().get(i).getReferent();
 		this.associatedNode.setSuccesseur(this.successor);
+		
+		//On met à jour les références		
+		references.updateRef(key.getIntKey(), this.associatedNode, successor);
 	}
 
 	//Getter sur le successeur
